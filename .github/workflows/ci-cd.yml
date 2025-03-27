@@ -113,14 +113,15 @@ jobs:
           IMAGE_TAG: sha-${{ github.sha }}
           REGISTRY: ghcr.io
         run: |
-          # Update the Kubernetes deployment file to use the new image tag
-          sed -i "s|image: ${REGISTRY}/.*|image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}|g" kubernetes/deployment.yaml
-          # Verify the change in the deployment.yaml
-          echo "Updated deployment to use image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}"
-          grep -A 1 "image:" kubernetes/deployment.yaml
+         # Update the Kubernetes deployment file to use the new image tag
+        sed -i "s|image: ${REGISTRY}/.*|image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}|g" kubernetes/deployment.yaml
+        
+        # Verify the change in the deployment.yaml
+        echo "Updated deployment to use image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}"
+         grep -A 1 "image:" kubernetes/deployment.yaml
 
       - name: Commit and push changes
       run: |
         git add kubernetes/deployment.yaml
-        ith new image tag: ${{ github.sha }} [skip ci]" || echo "No changes"
+        git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" || echo "No changes"
         git push
