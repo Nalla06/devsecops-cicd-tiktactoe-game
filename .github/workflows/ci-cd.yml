@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'kubernetes/deployment.yaml'  # Ignore changes to this file to prevent loops
-  pull_request:
-    branches: [ main ]
+
 jobs:
   build:
     name: Build Project
@@ -88,7 +85,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          
+      
       - name: Push Docker image
         uses: docker/build-push-action@v5
         with:
