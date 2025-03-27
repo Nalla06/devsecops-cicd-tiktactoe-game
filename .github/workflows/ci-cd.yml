@@ -82,7 +82,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE_TAG="ghcr.io/${{ github.repository }}:sha-${{ github.sha }}"
+          IMAGE_TAG="ghcr.io/nalla06/devsecops-cicd-tiktactoe-game:sha-${{ github.sha }}"
           docker build -t $IMAGE_TAG .
       
       - name: Push Docker image
