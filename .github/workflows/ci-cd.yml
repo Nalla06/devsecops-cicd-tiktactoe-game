@@ -87,7 +87,7 @@ jobs:
       
       - name: Push Docker image
         run: |
-          IMAGE_TAG="ghcr.io/${{ github.repository }}:sha-${{ github.sha }}"
+          IMAGE_TAG="ghcr.io/nalla06/devsecops-cicd-tiktactoe-game:sha-${{ github.sha }}"
           docker push $IMAGE_TAG
 
       - name: Run Trivy vulnerability scanner
