@@ -93,7 +93,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
+          image-ref: ghcr.io/nalla06/devsecops-cicd-tiktactoe-game:sha-${{ github.sha }}
           format: 'table'
           severity: 'CRITICAL,HIGH'
 
