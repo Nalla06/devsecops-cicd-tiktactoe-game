@@ -120,7 +120,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           load: true
-      
+      - name: Debug Image Reference
+        run: |
+          echo "Full Image Reference: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "SHA: ${{ github.sha }}"
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
