@@ -114,7 +114,7 @@ jobs:
           REGISTRY: ghcr.io
         run: |
          # Update the Kubernetes deployment file to use the new image tag
-        sed -i "s|image: ${REGISTRY}/.*|image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}|g" kubernetes/deployment.yaml
+          sed -i "s|image: ${REGISTRY}/.*|image: ${REGISTRY}/nalla06/'${{ github.repository }}':${IMAGE_TAG}|g" kubernetes/deployment.yaml
         
         # Verify the change in the deployment.yaml
         echo "Updated deployment to use image: ${REGISTRY}/nalla06/${{ github.repository }}:${IMAGE_TAG}"
